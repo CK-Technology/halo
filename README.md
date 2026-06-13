@@ -72,7 +72,7 @@ Modern dashboard built with Tauri + Leptos or React for real-time visualization 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/halo.git
+git clone https://github.com/CK-Technology/halo.git
 cd halo
 
 # Build with Cargo
