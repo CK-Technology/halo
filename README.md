@@ -5,29 +5,41 @@
 
   **Unified Security & Telemetry Platform for the GhostStack**
 
-  ![rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?logo=rust&logoColor=white)
-  ![siem](https://img.shields.io/badge/Type-SOC%20%26%20SIEM-blue?logo=security)
-  ![crowdsec](https://img.shields.io/badge/Integration-CrowdSec-4B7BBE?logo=crowdsource)
-  ![wazuh](https://img.shields.io/badge/Integration-Wazuh-005B94)
-  ![graylog](https://img.shields.io/badge/Integration-Graylog-888888)
-  ![fortinet](https://img.shields.io/badge/Integration-Fortinet-EE3124)
-  ![proxmox](https://img.shields.io/badge/Integration-Proxmox%20VE-E57000?logo=proxmox)
-  ![tailscale](https://img.shields.io/badge/Integration-Tailscale-3C3C3C?logo=tailscale)
-  ![prometheus](https://img.shields.io/badge/Metrics-Prometheus-DA4E2B?logo=prometheus)
-  ![nginx](https://img.shields.io/badge/Integration-NGINX-009639?logo=nginx)
-  ![archlinux](https://img.shields.io/badge/Tested%20on-Arch%20Linux-1793D1?logo=archlinux)
-  ![license](https://img.shields.io/badge/License-MIT-lightgrey)
+  ![rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=for-the-badge&logo=rust&logoColor=white)
+  ![siem](https://img.shields.io/badge/Type-SOC%20%26%20SIEM-blue?style=for-the-badge&logo=security&logoColor=white)
+  ![crowdsec](https://img.shields.io/badge/Integration-CrowdSec-4B7BBE?style=for-the-badge&logo=crowdsource&logoColor=white)
+  ![wazuh](https://img.shields.io/badge/Integration-Wazuh-005B94?style=for-the-badge)
+  ![graylog](https://img.shields.io/badge/Integration-Graylog-888888?style=for-the-badge)
+  ![fortinet](https://img.shields.io/badge/Integration-Fortinet-EE3124?style=for-the-badge)
+  ![proxmox](https://img.shields.io/badge/Integration-Proxmox%20VE-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
+  ![tailscale](https://img.shields.io/badge/Integration-Tailscale-3C3C3C?style=for-the-badge&logo=tailscale&logoColor=white)
+  ![prometheus](https://img.shields.io/badge/Metrics-Prometheus-DA4E2B?style=for-the-badge&logo=prometheus&logoColor=white)
+  ![nginx](https://img.shields.io/badge/Integration-NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
+  ![archlinux](https://img.shields.io/badge/Tested%20on-Arch%20Linux-1793D1?style=for-the-badge&logo=archlinux&logoColor=white)
+  ![license](https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge)
 </div>
+
+---
+
+> [!WARNING]
+> **Experimental.** Halo is a personal lab project I tinker with *alongside*,
+> not in place of, my production observability stack. Real monitoring/SIEM duties are
+> handled by the **Heimdall stack** (syslog-ng → Loki, Prometheus, Alertmanager, Grafana,
+> with read-only views into CrowdSec + Wazuh). Treat everything here as a moving target:
+> APIs, architecture, and the "Eyes" modules described below are design intent, not a
+> finished product. Do not deploy this anywhere you care about.
 
 ---
 
 ## 🎯 Overview
 
-**Halo** is a plug-and-drop distributed security observability platform built in Rust. Deploy it on your server and let it seamlessly integrate with your entire infrastructure — NGINX servers, Tailscale nodes, Fortinet firewalls, and more. Think of it as a next-generation Graylog alternative with native support for modern security tools and zero-trust networking.
+**Halo** aims to be a plug-and-drop distributed security observability platform built in Rust. The goal: drop it on a server and let it integrate with the surrounding infrastructure — NGINX servers, Tailscale nodes, Fortinet firewalls, and more — acting as a modern, Rust-native Graylog alternative with first-class support for security tooling and zero-trust networking.
 
-**One console to monitor, visualize, and enforce zero-trust posture across your entire ecosystem.**
+**One console to monitor, visualize, and reason about posture across the ecosystem.**
 
-### Key Features
+> This is the *target* design. See the experimental warning above and the [roadmap](docs/development/roadmap.md) for what actually exists today.
+
+### Design Goals
 
 - 🔌 **Plug & Play Deployment** — Drop Halo on a server and watch it connect to your infrastructure
 - 🛡️ **Multi-Source Security Aggregation** — CrowdSec, Wazuh, Fortinet firewalls, NGINX logs, and more
@@ -81,6 +93,19 @@ cargo build --release
 # Run Halo
 ./target/release/halo
 ```
+
+---
+
+## 📚 Documentation
+
+Full documentation lives in [`docs/`](docs/README.md).
+
+- **[Documentation Index](docs/README.md)** — start here
+- **[Getting Started](docs/getting-started/installation.md)** — build, run, configure
+- **[Architecture](docs/architecture/overview.md)** — core daemon, Eyes, data pipeline
+- **[Eyes (Collectors)](docs/eyes/overview.md)** — CrowdSec, Wazuh, Prometheus, NGINX, firewall, Tailscale, Proxmox
+- **[Integrations](docs/integrations/outputs.md)** — Graylog, Loki, Elasticsearch outputs
+- **[Roadmap](docs/development/roadmap.md)** — what exists vs. what's planned
 
 ---
 
